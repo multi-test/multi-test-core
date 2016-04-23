@@ -110,17 +110,19 @@ const rootReducer: IScaleReducer<IMendelScales> = (function () {
         }
     ];
 
-    return (scales: IMendelScales, answer, index) => {
+    return (scales: IMendelScales, answer: any, index: number) => {
         meta.forEach(({scaleId, questions}) => {
-            scores = questions[index + 1];
+            let scores = questions[index + 1];
             scales[scaleId] += scores ? scores[answer - 1] : 0;
         });
+
+        return scales;
     };
 }());
 
-const calculate = answers => normalize(answers.reduce(rootReducer, createBlankScales(0)));
+const calculate = answers => answers.reduce(rootReducer, createBlankScales(0));
 const validate = buildAnswersValidator(71, [1, 2, 3, 4, 5], createBlankScales(NaN));
 
 export default function mendel(answers: any[]): IMendelScales {
-    return validate(answers) || calculate(decrement(answers));
+    return validate(answers) || calculate(answers);
 }
