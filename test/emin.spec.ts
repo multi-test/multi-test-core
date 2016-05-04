@@ -24,10 +24,10 @@ describe(emin.name, () => {
     }
 
     describe('when blank', () => {
-        const expected = createEminScales([0, 0, 0, 0, 0]);
+        const expected = createEminScales([NaN, NaN, NaN, NaN, NaN]);
         
         it(should_equal(expected), () => {
-            expect(answers.calculate()).to.eql(expected);
+            expect(emin(answers)).to.eql(expected);
         });
     });
 
@@ -36,7 +36,7 @@ describe(emin.name, () => {
 
         const expected = createEminScales([9, 15, 21, 9, 12]);
         it(should_equal(expected), () => {
-            expect(answers.calculate()).to.eql(expected);
+            expect(emin(answers)).to.eql(expected);
         });
     });
 
@@ -45,7 +45,7 @@ describe(emin.name, () => {
 
         const expected = createEminScales([15, 15, 17, 10, 11]);
         it(should_equal(expected), () => {
-            expect(answers.calculate()).to.eql(expected);
+            expect(emin(answers)).to.eql(expected);
         });
     });
 
@@ -54,7 +54,7 @@ describe(emin.name, () => {
 
         const expected = createEminScales([21, 15, 13, 11, 10]);
         it(should_equal(expected), () => {
-            expect(answers.calculate()).to.eql(expected);
+            expect(emin(answers)).to.eql(expected);
         });
     });
 
@@ -63,7 +63,7 @@ describe(emin.name, () => {
 
         const expected = createEminScales([27, 15, 9, 12, 9]);
         it(should_equal(expected), () => {
-            expect(answers.calculate()).to.eql(expected);
+            expect(emin(answers)).to.eql(expected);
         });
     });
 });

@@ -26,9 +26,32 @@ const rootReducer = combineReducers<IUSKScales>([
     return scales;
 }));
 
+const normalize = (function () {
+    const findIndexOfGreater = arr => val => {
+        return arr.reduce((i, v) => i + (val >= v), 0);
+    };
+
+    const meta = [
+        { scaleId: "Ио", normalize: findIndexOfGreater([-132, -13, -2, 10, 22, 33, 45, 57, 69, 80, 133]) },
+        { scaleId: "Ид", normalize: findIndexOfGreater([-36, -10, -6, -2, 2, 6, 10, 15, 19, 23, 37]) },
+        { scaleId: "Ин", normalize: findIndexOfGreater([-36, -7, -3, 1, 5, 8, 12, 16, 20, 24, 37]) },
+        { scaleId: "Ис", normalize: findIndexOfGreater([-30, -11, -7, -4, 0, 4, 7, 11, 14, 18, 31]) },
+        { scaleId: "Ип", normalize: findIndexOfGreater([-30, -4, 0, 4, 8, 12, 16, 20, 24, 28, 31]) },
+        { scaleId: "Им", normalize: findIndexOfGreater([-12, -6, -4, -2, 0, 2, 5, 7, 9, 11, 13]) },
+        { scaleId: "Из", normalize: findIndexOfGreater([-12, -3, -1, 1, 3, 4, 5, 7, 9, 11, 13]) },
+    ];
+
+    return function (scales: IUSKScales): IUSKScales {
+        return meta.reduce((normalizedScales, {scaleId, normalize}) => {
+            normalizedScales[scaleId] = normalize(scales[scaleId]);
+            return normalizedScales;
+        }, createBlankScales(0));
+    };
+}());
+
 const calculate = answers => answers.reduce(rootReducer, createBlankScales(0));
 const validate = buildAnswersValidator(44, [-3, -2, -1, 1, 2, 3], createBlankScales(NaN));
 
 export default function usk(answers: any[]): IUSKScales {
-    return validate(answers) || calculate(answers);
+    return validate(answers) || normalize(calculate(answers));
 }

@@ -4,8 +4,8 @@ import {
 } from "../util/interfaces";
 
 export default function buildAnswersValidator<TScales>(countOfAnswers: number, validAnswers: any[], invalidScales: TScales): IAnswersValidator<TScales> {
-    const isValid = function (answer) {
-        return this.has(answer);
+    const isInvalid = function (answer) {
+        return !this.has(answer);
     }.bind(new Set(validAnswers));
 
     return function (answers) {
@@ -17,8 +17,10 @@ export default function buildAnswersValidator<TScales>(countOfAnswers: number, v
             return invalidScales;
         }
 
-        if (!answers.every(isValid)) {
-            return invalidScales;
+        for (let i = 0; i < countOfAnswers; i++) {
+            if (isInvalid(answers[i])) {
+                return invalidScales;
+            }
         }
     };
 }

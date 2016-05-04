@@ -2,12 +2,21 @@
 import amon from "../src/amon/amon";
 import { should_equal } from './util/helpers';
 import { expect } from 'chai';
+import {createBlankScales} from "../src/amon/scales";
 
 describe(amon.name, () => {
     
     let answers;
 
+    const invalidResult = createBlankScales(NaN);
+
     beforeEach(() => answers = new Array(220));
+
+    describe('when not filled', () => {
+        it(should_equal(invalidResult), () => {
+            expect(amon(answers)).to.eql(invalidResult);
+        });
+    });
 
     describe('when filled with +', () => {
         beforeEach(() => answers.fill('+'));
@@ -34,7 +43,15 @@ describe(amon.name, () => {
         };
 
         it(should_equal(expected), () => {
-            expect(answers.calculate()).to.eql(expected);
+            expect(amon(answers)).to.eql(expected);
+        });
+
+        describe('when answers length is invalid', () => {
+            beforeEach(() => { delete answers[answers.length - 1]; });
+
+            it(should_equal(invalidResult), () => {
+                expect(amon(answers)).to.eql(invalidResult);
+            });
         });
     });
 
@@ -63,7 +80,7 @@ describe(amon.name, () => {
         };
 
         it(should_equal(expected), () => {
-            expect(answers.calculate()).to.eql(expected);
+            expect(amon(answers)).to.eql(expected);
         });
     });
 });

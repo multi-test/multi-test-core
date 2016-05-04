@@ -84,17 +84,17 @@ const normalize: IScaleMapper<IMMPIScales> = (function () {
     };
 
     const calcT = (scales: IMMPIScales) => {
-        scales.T1 = T[scales[1]] || NaN;
-        scales.T2 = T[scales[2]] || NaN;
-        scales.T3 = T[scales[3]] || NaN;
-        scales.T4 = T[scales[4]] || NaN;
-        scales.T6 = T[scales[6]] || NaN;
-        scales.T7 = T[scales[7]] || NaN;
-        scales.T8 = T[scales[8]] || NaN;
-        scales.T9 = T[scales[9]] || NaN;
-        scales.TL = T[scales.L] || NaN;
-        scales.TF = T[scales.F] || NaN;
-        scales.TK = T[scales.K] || NaN;
+        scales.T1 = T[1][scales[1]] || NaN;
+        scales.T2 = T[2][scales[2]] || NaN;
+        scales.T3 = T[3][scales[3]] || NaN;
+        scales.T4 = T[4][scales[4]] || NaN;
+        scales.T6 = T[6][scales[6]] || NaN;
+        scales.T7 = T[7][scales[7]] || NaN;
+        scales.T8 = T[8][scales[8]] || NaN;
+        scales.T9 = T[9][scales[9]] || NaN;
+        scales.TL = T.L[scales.L] || NaN;
+        scales.TF = T.F[scales.F] || NaN;
+        scales.TK = T.K[scales.K] || NaN;
 
         return scales;
     };
