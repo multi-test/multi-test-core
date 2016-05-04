@@ -6,11 +6,9 @@ import {createBlankScales} from "../src/mmpi/scales";
 const when_filled_with = wfw(mmpi, 71);
 
 describe("MMPI", () => {
-    const invalidResult = createBlankScales(NaN);
+    when_filled_with(undefined, createBlankScales(NaN));
 
-    when_filled_with(undefined, invalidResult);
-
-    when_filled_with(1, invalidResult);
+    when_filled_with(1, createBlankScales(NaN));
 
     when_filled_with('+', {
         "1": 9,

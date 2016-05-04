@@ -6,9 +6,7 @@ import {createBlankScales} from "../src/usk/scales";
 const when_filled_with = wfw(usk, 44);
 
 describe("USK", () => {
-    const invalidResult = createBlankScales(NaN);
-
-    when_filled_with(undefined, invalidResult);
+    when_filled_with(undefined, createBlankScales(NaN));
 
     when_filled_with(-3, {
         "Ио": 3,
@@ -40,7 +38,7 @@ describe("USK", () => {
         "Из": 3,
     });
 
-    when_filled_with(0, invalidResult);
+    when_filled_with(0, createBlankScales(NaN));
 
     when_filled_with(1, {
         "Ио": 3,
