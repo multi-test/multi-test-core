@@ -4,6 +4,7 @@
   "description": "Collection of pure functions for calculating results of psychological tests",
   "main": "src/index.js",
   "scripts": {
+    "build": "tsc",
     "test": "mocha --recursive test"
   },
   "repository": {
