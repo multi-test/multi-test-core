@@ -5,7 +5,7 @@ import {createBlankScales} from "../src/spa/scales";
 
 const when_filled_with = wfw(spa, 101);
 
-describe('SPA Test', () => {
+describe(spa.name, () => {
     const createSPAScales = ({
         1: [e1a, e1b],
         2: [e2a, e2b],

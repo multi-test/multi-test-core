@@ -5,7 +5,7 @@ import {createBlankScales} from "../src/mmpi/scales";
 
 const when_filled_with = wfw(mmpi, 71);
 
-describe("MMPI", () => {
+describe(mmpi.name, () => {
     when_filled_with(undefined, createBlankScales(NaN));
 
     when_filled_with(1, createBlankScales(NaN));

@@ -5,7 +5,7 @@ import {createBlankScales} from "../src/usk/scales";
 
 const when_filled_with = wfw(usk, 44);
 
-describe("USK", () => {
+describe(usk.name, () => {
     when_filled_with(undefined, createBlankScales(NaN));
 
     when_filled_with(-3, {
