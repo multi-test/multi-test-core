@@ -1,5 +1,5 @@
 typings
 node_modules
-src/**/*.js
-test/**/*.js
-.idea/workspace.xml
+dist
+.idea
+*.log

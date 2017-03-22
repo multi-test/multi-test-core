@@ -1,7 +1,7 @@
-import usk from "../src/usk/usk";
-import { expect } from 'chai';
-import {when_filled_with as wfw, should_equal} from "./util/helpers";
+import { expect } from "chai";
 import {createBlankScales} from "../src/usk/scales";
+import usk from "../src/usk/usk";
+import {should_equal, when_filled_with as wfw} from "./util/helpers";
 
 const when_filled_with = wfw(usk, 44);
 
@@ -88,7 +88,7 @@ describe(usk.name, () => {
             -2, -1, 2,
             2, -1, 3,
             -2, 2, -1,
-            3, 2
+            3, 2,
         ]);
 
         const expected = {

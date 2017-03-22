@@ -1,15 +1,15 @@
-import {IScaleReducer} from "../util/interfaces";
-import {IEminScales, createBlankScales} from "./scales";
-import createAnswersValidator from "../util/validateAnswers";
 import combineReducers from "../util/combineReducers";
+import {IScaleReducer} from "../util/interfaces";
+import createAnswersValidator from "../util/validateAnswers";
+import {createBlankScales, IEminScales} from "./scales";
 
 const rootReducer: IScaleReducer<IEminScales> = combineReducers([
-    { id: 'МП', plus: [1, 3, 11, 13, 20, 27, 29, 32, 34], minus: [38, 42, 46] },
-    { id: 'МУ', plus: [9, 15, 17, 24, 36], minus: [2, 5, 30, 40, 44] },
-    { id: 'ВП', plus: [7, 14, 26], minus: [8, 18, 22, 31, 35, 41, 45] },
-    { id: 'ВУ', plus: [4, 25, 28, 37], minus: [12, 33, 43] },
-    { id: 'ВЭ', plus: [19, 21, 23], minus: [6, 10, 16, 39] },
-].map(scaleMeta => {
+    { id: "МП", plus: [1, 3, 11, 13, 20, 27, 29, 32, 34], minus: [38, 42, 46] },
+    { id: "МУ", plus: [9, 15, 17, 24, 36], minus: [2, 5, 30, 40, 44] },
+    { id: "ВП", plus: [7, 14, 26], minus: [8, 18, 22, 31, 35, 41, 45] },
+    { id: "ВУ", plus: [4, 25, 28, 37], minus: [12, 33, 43] },
+    { id: "ВЭ", plus: [19, 21, 23], minus: [6, 10, 16, 39] },
+].map((scaleMeta) => {
     let { id, plus, minus } = scaleMeta;
     let setP = new Set<number>(plus);
     let setM = new Set<number>(minus);
@@ -47,11 +47,11 @@ const computeScales = (function (computedScales: IComputedScaleMeta[]) {
         }, scales);
     };
 }([
-    { id: 'МЭИ', sum: ['МП', 'МУ'] },
-    { id: 'ВЭИ', sum: ['ВП', 'ВУ', 'ВЭ'] },
-    { id: 'ПЭ', sum: ['МП', 'ВП'] },
-    { id: 'УЭ', sum: ['МУ', 'ВУ', 'ВЭ'] },
-    { id: 'ОУ', sum: ['МП', 'МУ', 'ВП', 'ВУ', 'ВЭ'] },
+    { id: "МЭИ", sum: ["МП", "МУ"] },
+    { id: "ВЭИ", sum: ["ВП", "ВУ", "ВЭ"] },
+    { id: "ПЭ", sum: ["МП", "ВП"] },
+    { id: "УЭ", sum: ["МУ", "ВУ", "ВЭ"] },
+    { id: "ОУ", sum: ["МП", "МУ", "ВП", "ВУ", "ВЭ"] },
 ]));
 
 const validate = createAnswersValidator(46, [0, 1, 2, 3], createBlankScales(NaN));

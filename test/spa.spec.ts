@@ -1,7 +1,7 @@
-import spa from "../src/spa/spa";
-import { when_filled_with as wfw, should_equal } from './util/helpers';
-import { expect } from 'chai';
+import { expect } from "chai";
 import {createBlankScales} from "../src/spa/scales";
+import spa from "../src/spa/spa";
+import { should_equal, when_filled_with as wfw } from "./util/helpers";
 
 const when_filled_with = wfw(spa, 101);
 
@@ -16,27 +16,27 @@ describe(spa.name, () => {
         7: [e7a, e7b],
         8: e8,
     }) => ({
-        '1a': e1a,
-        '1b': e1b,
-        '2a': e2a,
-        '2b': e2b,
-        '3a': e3a,
-        '3b': e3b,
-        '4a': e4a,
-        '4b': e4b,
-        '5a': e5a,
-        '5b': e5b,
-        '6a': e6a,
-        '6b': e6b,
-        '7a': e7a,
-        '7b': e7b,
-        '8': e8,
-        A: Math.round(100 * e1a / (e1a + e1b)),
-        S: Math.round(100 * e3a / (e3a + e3b)),
-        L: Math.round(100 * 1.2 * e4a / (1.2 * e4a + e4b)),
-        E: Math.round(100 * e5a / (e5a + e5b)),
-        I: Math.round(100 * e6a / (e6a + 1.4 * e6b)),
-        D: Math.round(100 * 2 * e7a / (2 * e7a + e7b)),
+        "1a": e1a,
+        "1b": e1b,
+        "2a": e2a,
+        "2b": e2b,
+        "3a": e3a,
+        "3b": e3b,
+        "4a": e4a,
+        "4b": e4b,
+        "5a": e5a,
+        "5b": e5b,
+        "6a": e6a,
+        "6b": e6b,
+        "7a": e7a,
+        "7b": e7b,
+        "8": e8,
+        "A": Math.round(100 * e1a / (e1a + e1b)),
+        "S": Math.round(100 * e3a / (e3a + e3b)),
+        "L": Math.round(100 * 1.2 * e4a / (1.2 * e4a + e4b)),
+        "E": Math.round(100 * e5a / (e5a + e5b)),
+        "I": Math.round(100 * e6a / (e6a + 1.4 * e6b)),
+        "D": Math.round(100 * 2 * e7a / (2 * e7a + e7b)),
     });
 
     when_filled_with(undefined, createBlankScales(NaN));
@@ -49,7 +49,7 @@ describe(spa.name, () => {
         5: [0, 0],
         6: [0, 0],
         7: [0, 0],
-        8: 0
+        8: 0,
     }));
 
     when_filled_with(1, createBlankScales(NaN));

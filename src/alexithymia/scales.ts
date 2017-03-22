@@ -6,7 +6,6 @@ export interface IAlexithymiaScale {
 
 export const createBlankScales: IScaleFactory<IAlexithymiaScale> = function (v) {
     return {
-        A: v
-    }
+        A: v,
+    };
 };
-

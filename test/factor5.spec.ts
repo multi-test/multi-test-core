@@ -1,9 +1,9 @@
+import { expect } from "chai";
+import { mapValues } from "lodash";
 import factor5 from "../src/factor5/factor5";
 import { createBlankScales } from "../src/factor5/scales";
-import {when_filled_with as wfw, should_equal} from "./util/helpers";
-import { expect } from 'chai';
 import { IFactor5Scales } from "../src/factor5/scales";
-import { mapValues } from 'lodash';
+import {should_equal, when_filled_with as wfw} from "./util/helpers";
 
 const when_filled_with = wfw(factor5, 75);
 
@@ -11,7 +11,7 @@ describe(factor5.name, () => {
     function createFactor5Scales(value) {
         return mapValues(
             createBlankScales(value),
-            (val, key) => ~key.indexOf('.') ? val / 5 : val
+            (val, key) => ~key.indexOf(".") ? val / 5 : val,
         );
     }
 

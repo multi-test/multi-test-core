@@ -1,17 +1,17 @@
 /* global describe, beforeEach, it, expect */
+import { expect } from "chai";
 import amon from "../src/amon/amon";
-import {when_filled_with as wfw, should_equal} from "./util/helpers";
-import { expect } from 'chai';
 import {createBlankScales} from "../src/amon/scales";
+import {should_equal, when_filled_with as wfw} from "./util/helpers";
 
 const when_filled_with = wfw(amon, 220);
 
 describe(amon.name, () => {
     when_filled_with(undefined, createBlankScales(NaN));
 
-    when_filled_with('-', createBlankScales(0));
+    when_filled_with("-", createBlankScales(0));
 
-    when_filled_with('+', {
+    when_filled_with("+", {
         A1: 13,
         A2: 14,
         A3: 12,

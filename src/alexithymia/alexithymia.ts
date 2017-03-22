@@ -1,6 +1,6 @@
-import {IAlexithymiaScale, createBlankScales} from "./scales";
 import {IAnswersValidator} from "../util/interfaces";
 import createAnswersValidator from "../util/validateAnswers";
+import {createBlankScales, IAlexithymiaScale} from "./scales";
 
 const positives = new Set([2, 3, 4, 7, 8, 10, 14, 16, 17, 18, 19, 20, 22, 23, 25, 26]);
 const negatives = new Set([1, 5, 6, 9, 11, 12, 13, 15, 21, 24]);
@@ -23,5 +23,5 @@ function calculate(answers: number[]) {
 }
 
 export default function alexithymia(answers): IAlexithymiaScale {
-    return validate(answers) || createBlankScales(calculate(answers))
+    return validate(answers) || createBlankScales(calculate(answers));
 }

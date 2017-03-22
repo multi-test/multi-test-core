@@ -1,6 +1,6 @@
 import {
+    IAnswersValidator,
     IScaleFactory,
-    IAnswersValidator
 } from "../util/interfaces";
 
 export default function buildAnswersValidator<TScales>(countOfAnswers: number, validAnswers: any[], invalidScales: TScales): IAnswersValidator<TScales> {

@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "mocha --recursive test"
+    "lint": "tslint **/*.ts",
+    "test": "mocha -r ts-node/register test/**/*.spec.ts"
   },
   "repository": {
     "type": "git",
@@ -18,9 +19,13 @@
   },
   "homepage": "https://github.com/multi-test/multi-test-core#readme",
   "devDependencies": {
+    "@types/chai": "^3.4.35",
+    "@types/mocha": "^2.2.40",
     "chai": "^3.5.0",
     "lodash": "^4.11.1",
     "mocha": "^2.4.5",
-    "ts-node": "^0.7.2"
+    "ts-node": "^3.0.2",
+    "tslint": "^4.5.1",
+    "typescript": "^2.2.1"
   }
 }

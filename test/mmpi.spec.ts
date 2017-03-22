@@ -1,7 +1,7 @@
+import { expect } from "chai";
 import mmpi from "../src/mmpi/mmpi";
-import { expect } from 'chai';
-import {when_filled_with as wfw, should_equal} from "./util/helpers";
 import {createBlankScales} from "../src/mmpi/scales";
+import {should_equal, when_filled_with as wfw} from "./util/helpers";
 
 const when_filled_with = wfw(mmpi, 71);
 
@@ -10,7 +10,7 @@ describe(mmpi.name, () => {
 
     when_filled_with(1, createBlankScales(NaN));
 
-    when_filled_with('+', {
+    when_filled_with("+", {
         "1": 9,
         "2": 8,
         "3": 14,
@@ -35,7 +35,7 @@ describe(mmpi.name, () => {
         "TL": 35,
     });
 
-    when_filled_with('-', {
+    when_filled_with("-", {
         "1": 12,
         "2": 11,
         "3": 11,
@@ -64,30 +64,30 @@ describe(mmpi.name, () => {
         let answers;
 
         beforeEach(() => answers = [
-            '+', '+', '+',
-            '+', '-', '+',
-            '-', '-', '-',
-            '-', '+', '-',
-            '-', '-', '-',
-            '-', '-', '-',
-            '-', '+', '-',
-            '-', '+', '+',
-            '-', '-', '-',
-            '+', '-', '-',
-            '-', '-', '-',
-            '+', '+', '-',
-            '+', '+', '-',
-            '-', '-', '+',
-            '+', '-', '+',
-            '-', '+', '-',
-            '-', '-', '-',
-            '+', '+', '+',
-            '-', '-', '+',
-            '-', '-', '+',
-            '+', '-', '-',
-            '+', '+', '+',
-            '+', '+', '+',
-            '-', '-'
+            "+", "+", "+",
+            "+", "-", "+",
+            "-", "-", "-",
+            "-", "+", "-",
+            "-", "-", "-",
+            "-", "-", "-",
+            "-", "+", "-",
+            "-", "+", "+",
+            "-", "-", "-",
+            "+", "-", "-",
+            "-", "-", "-",
+            "+", "+", "-",
+            "+", "+", "-",
+            "-", "-", "+",
+            "+", "-", "+",
+            "-", "+", "-",
+            "-", "-", "-",
+            "+", "+", "+",
+            "-", "-", "+",
+            "-", "-", "+",
+            "+", "-", "-",
+            "+", "+", "+",
+            "+", "+", "+",
+            "-", "-",
         ]);
 
         const expected = {
@@ -112,7 +112,7 @@ describe(mmpi.name, () => {
             "T9": 52,
             "TL": 45,
             "TF": 38,
-            "TK": 42
+            "TK": 42,
         };
 
         it(should_equal(expected), () => {

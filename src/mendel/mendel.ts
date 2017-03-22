@@ -1,12 +1,12 @@
-import {IMendelScales} from "./scales";
 import {createBlankScales} from "../mmpi/scales";
-import buildAnswersValidator from "../util/validateAnswers";
 import {IScaleReducer} from "../util/interfaces";
+import buildAnswersValidator from "../util/validateAnswers";
+import {IMendelScales} from "./scales";
 
 const rootReducer: IScaleReducer<IMendelScales> = (function () {
-    var meta = [
+    let meta = [
         {
-            scaleId: 'тревоги',
+            scaleId: "тревоги",
             questions: {
                 6: [-1.33, -0.44, 1.18, 1.31, 0.87],
                 12: [-1.08, -1.3, -0.6, 0.37, 1.44],
@@ -17,11 +17,11 @@ const rootReducer: IScaleReducer<IMendelScales> = (function () {
                 37: [-0.78, -1.48, -1.38, 0.11, 0.48],
                 41: [-1.26, -0.93, -0.4, 0.34, 1.24],
                 50: [-1.23, -0.74, 0, 0.37, 0.63],
-                61: [-0.92, -0.36, 0.28, 0.56, 0.1]
-            }
+                61: [-0.92, -0.36, 0.28, 0.56, 0.1],
+            },
         },
         {
-            scaleId: 'невротической депрессии',
+            scaleId: "невротической депрессии",
             questions: {
                 2: [-1.58, -1.45, -0.41, 0.7, 1.46],
                 7: [-1.51, -1.53, -0.34, 0.58, 1.4],
@@ -32,11 +32,11 @@ const rootReducer: IScaleReducer<IMendelScales> = (function () {
                 48: [-1.2, -1.23, 0.36, 0.56, 0.2],
                 49: [-1.08, -1.08, -1.18, 0, 0.46],
                 58: [-1.2, -1.26, -0.37, 0.21, 0.42],
-                68: [-1.08, -0.54, -0.1, 0.25, 0.32]
-            }
+                68: [-1.08, -0.54, -0.1, 0.25, 0.32],
+            },
         },
         {
-            scaleId: 'астении',
+            scaleId: "астении",
             questions: {
                 3: [-1.51, -1.14, -0.4, 0.7, 1.4],
                 8: [-1.5, -0.33, 0.9, 1.32, 0.7],
@@ -47,11 +47,11 @@ const rootReducer: IScaleReducer<IMendelScales> = (function () {
                 24: [-0.93, -0.8, -0.1, 0.6, 1.17],
                 27: [-1.19, -0.44, 0.18, 1.2, 1.08],
                 45: [-1.58, -0.23, 0.34, 0.57, 0.78],
-                62: [-0.5, -0.56, 0.38, 0.56, 0]
-            }
+                62: [-0.5, -0.56, 0.38, 0.56, 0],
+            },
         },
         {
-            scaleId: 'истерического типа реагирования',
+            scaleId: "истерического типа реагирования",
             questions: {
                 5: [-1.41, -1.25, -0.5, 0.4, 1.53],
                 21: [-1.2, -1.48, -1.26, -0.18, 0.67],
@@ -63,11 +63,11 @@ const rootReducer: IScaleReducer<IMendelScales> = (function () {
                 47: [-1.38, -1.08, -0.64, -0.1, 0.52],
                 49: [-1.08, -1.08, -1.18, -0.1, 0.46],
                 57: [-1.2, -1.34, -0.3, 0, 0.42],
-                64: [-0.6, -1.26, -1.08, -0.38, 0.23]
-            }
+                64: [-0.6, -1.26, -1.08, -0.38, 0.23],
+            },
         },
         {
-            scaleId: 'обсессивно-фобических нарушений',
+            scaleId: "обсессивно-фобических нарушений",
             questions: {
                 11: [-1.38, -1.32, -0.3, 0.3, 1.2],
                 13: [-1.53, -1.38, -0.74, 0.23, 0.9],
@@ -78,11 +78,11 @@ const rootReducer: IScaleReducer<IMendelScales> = (function () {
                 53: [-0.78, -1.5, -0.35, 0.27, 0.36],
                 56: [-0.3, -1.2, -1.3, -0.67, 0.33],
                 61: [-0.92, -0.36, 0.28, 0.56, 0.1],
-                66: [-1, -0.78, -1.15, -0.52, 0.18]
-            }
+                66: [-1, -0.78, -1.15, -0.52, 0.18],
+            },
         },
         {
-            scaleId: 'вегетативных нарушений',
+            scaleId: "вегетативных нарушений",
             questions: {
                 1: [-1.51, -1.6, -0.54, 0.5, 1.45],
                 4: [-1.56, -1.51, -0.34, 0.68, 1.23],
@@ -105,9 +105,9 @@ const rootReducer: IScaleReducer<IMendelScales> = (function () {
                 59: [-1.08, -0.83, -0.26, 0.24, 0.55],
                 63: [-0.9, -1.15, -1, -0.1, 0.25],
                 65: [-1, -1.26, -0.22, -0.43, 0.27],
-                67: [-0.7, -0.42, -0.55, 0.18, 0.4]
-            }
-        }
+                67: [-0.7, -0.42, -0.55, 0.18, 0.4],
+            },
+        },
     ];
 
     return (scales: IMendelScales, answer: any, index: number) => {
@@ -120,7 +120,7 @@ const rootReducer: IScaleReducer<IMendelScales> = (function () {
     };
 }());
 
-const calculate = answers => answers.reduce(rootReducer, createBlankScales(0));
+const calculate = (answers) => answers.reduce(rootReducer, createBlankScales(0));
 const validate = buildAnswersValidator(71, [1, 2, 3, 4, 5], createBlankScales(NaN));
 
 export default function mendel(answers: any[]): IMendelScales {

@@ -19,7 +19,7 @@ export interface ILSIScales {
     TH: number;
 }
 
-export const createBlankScales: IScaleFactory<ILSIScales> = v => ({
+export const createBlankScales: IScaleFactory<ILSIScales> = (v) => ({
     A: v,
     B: v,
     C: v,

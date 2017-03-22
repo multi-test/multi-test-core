@@ -1,7 +1,7 @@
+import { expect } from "chai";
 import emin from "../src/emin/emin";
-import {when_filled_with as wfw, should_equal} from "./util/helpers";
-import { expect } from 'chai';
 import {IEminScales} from "../src/emin/scales";
+import {should_equal, when_filled_with as wfw} from "./util/helpers";
 
 const when_filled_with = wfw(emin, 46);
 

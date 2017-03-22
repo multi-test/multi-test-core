@@ -1,12 +1,12 @@
-import {createBlankScales, IFactor5Scales} from "./scales";
 import buildAnswersValidator from "../util/validateAnswers";
+import {createBlankScales, IFactor5Scales} from "./scales";
 
-const SECONDARY_SCALES = ['I', 'II', 'III', 'IV', 'V'];
-const SUB_SCALES = ['1', '2', '3', '4', '5'];
+const SECONDARY_SCALES = ["I", "II", "III", "IV", "V"];
+const SUB_SCALES = ["1", "2", "3", "4", "5"];
 const PRIMARY_SCALES = []; // I.1, I.2, ..., V.4, V.5
 
-SECONDARY_SCALES.forEach(x => {
-    SUB_SCALES.forEach(y => {
+SECONDARY_SCALES.forEach((x) => {
+    SUB_SCALES.forEach((y) => {
         PRIMARY_SCALES.push(`${x}.${y}`);
     });
 });
