@@ -2,4 +2,5 @@ typings
 node_modules
 dist
 .idea
+yarn.lock
 *.log
