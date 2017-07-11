@@ -1,5 +1,5 @@
 export interface IScaleReducer<TScales> {
-    <TAnswer>(scales: TScales, value: TAnswer, index: number): TScales;
+    (scales: TScales, value: any, index: number): TScales;
 }
 
 export interface IScaleMapper<TScales> {

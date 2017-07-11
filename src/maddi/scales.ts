@@ -1,5 +1,7 @@
 import {IScaleFactory} from "../util/interfaces";
 
+export type IMaddiAnswer = 0 | 1 | 2 | 3;
+
 export interface IMaddiScales {
     "hardiness": number;
     "commitment": number;

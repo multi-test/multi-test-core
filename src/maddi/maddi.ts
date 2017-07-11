@@ -1,22 +1,31 @@
-import {IScaleReducer} from "../util/interfaces";
-import {IScaleMapper} from "../util/interfaces";
+import combineReducers from "../util/combineReducers";
+import {IScaleMapper, IScaleReducer} from "../util/interfaces";
 import buildAnswersValidator from "../util/validateAnswers";
 import {createBlankScales} from "./scales";
-import {IMaddiScales} from "./scales";
+import {IMaddiAnswer, IMaddiScales} from "./scales";
 
-const rawSchema = {
-    "commitment": {
-        [-1]: [2, 3, 10, 11, 14, 28, 32, 37, 38, 40, 42],
-        [+1]: [4, 12, 22, 23, 24, 29, 41 ],
-    },
-    "control": {
-        [-1]: [1, 5, 6, 8, 16, 20, 27, 31, 35, 39, 43],
-        [+1]: [9, 15, 17, 21, 25, 44 ],
-    },
-    "challenge": {
-        [-1]: [7, 13, 18, 19, 26, 30, 33, 36],
-        [+1]: [34, 45 ],
-    },
+const neg = (v: IMaddiAnswer) => (3 - v) as IMaddiAnswer;
+const pos = (v: IMaddiAnswer) => v;
+
+const rootReducer = combineReducers<IMaddiScales>([
+    { scaleId: "commitment", sign: pos, indices: [4, 12, 22, 23, 24, 29, 41]                },
+    { scaleId: "commitment", sign: neg, indices: [2, 3, 10, 11, 14, 28, 32, 37, 38, 40, 42] },
+    { scaleId: "control",    sign: pos, indices: [9, 15, 17, 21, 25, 44]                    },
+    { scaleId: "control",    sign: neg, indices: [1, 5, 6, 8, 16, 20, 27, 31, 35, 39, 43]   },
+    { scaleId: "challenge",  sign: pos, indices: [34, 45]                                   },
+    { scaleId: "challenge",  sign: neg, indices: [7, 13, 18, 19, 26, 30, 33, 36]            },
+].map(({scaleId, sign, indices}) => (scales: IMaddiScales, answer: IMaddiAnswer, index: number) => {
+    if (~indices.indexOf(index)) {
+        scales[scaleId] += sign(answer);
+    }
+
+    return scales;
+}));
+
+const calculate = (answers: IMaddiAnswer[]) => answers.reduce(rootReducer, createBlankScales(0));
+const compute = (scales: IMaddiScales) => {
+    scales.hardiness = scales.challenge + scales.commitment + scales.control;
+    return scales;
 };
 
 const norms = {
@@ -34,9 +43,8 @@ const norms = {
     },
 };
 
-const calculate = () => createBlankScales(NaN);
-const validate = buildAnswersValidator(45, [1, 2, 3, 4], createBlankScales(NaN));
+const validate = buildAnswersValidator(45, [0, 1, 2, 3], createBlankScales(NaN));
 
-export default function maddi(answers: any[]): IMaddiScales {
-    return validate(answers) || calculate();
+export default function maddi(answers: IMaddiAnswer[]): IMaddiScales {
+    return validate(answers) || compute(calculate(answers));
 }
