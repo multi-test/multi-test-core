@@ -35,4 +35,22 @@ describe(maddi.name, () => {
     run_tests_for(1);
     run_tests_for(2);
     run_tests_for(3);
+
+    it('should pass test suite #1', () =>
+        expect(maddi([
+            0, 0, 0, 3, 1, // 5
+            2, 3, 1, 2, 0, // 10
+            1, 1, 1, 2, 2, // 15
+            3, 1, 1, 0, 0, // 20
+            1, 0, 3, 3, 3, // 25
+            0, 2, 3, 3, 0, // 30
+            1, 0, 0, 1, 0, // 35
+            0, 1, 0, 0, 0, // 40
+            2, 3, 0, 3, 2, // 45
+        ])).to.eql({
+            commitment: 38,
+            control: 35,
+            challenge: 22,
+            hardiness: 95,
+        }));
 });
