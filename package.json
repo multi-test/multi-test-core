@@ -1,0 +1,24 @@
+{
+  "name": "multi-test-core",
+  "version": "1.0.0",
+  "description": "Collection of pure functions for calculating results of psychological tests",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha --recursive test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/multi-test/multi-test-core.git"
+  },
+  "author": "Yaroslav Serhieiev <noomorph@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/multi-test/multi-test-core/issues"
+  },
+  "homepage": "https://github.com/multi-test/multi-test-core#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "ts-node": "^0.7.2"
+  }
+}
