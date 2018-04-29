@@ -1,23 +1,6 @@
-export interface ILSIScales {
-    A: number;
-    B: number;
-    C: number;
-    D: number;
-    E: number;
-    F: number;
-    G: number;
-    H: number;
-    TA: number;
-    TB: number;
-    TC: number;
-    TD: number;
-    TE: number;
-    TF: number;
-    TG: number;
-    TH: number;
-}
+import {LSIScales} from "./types";
 
-export const createBlankScales: IScaleFactory<ILSIScales> = (v) => ({
+export const createBlankScales: IScaleFactory<LSIScales> = (v) => ({
     A: v,
     B: v,
     C: v,

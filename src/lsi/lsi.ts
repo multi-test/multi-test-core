@@ -1,8 +1,9 @@
 import {buildAnswersValidator} from "../util/validateAnswers";
-import {createBlankScales, ILSIScales} from "./scales";
+import {createBlankScales} from "./scales";
+import {LSIAnswer as Answer, LSIScales as Scales} from "./types";
 
-const rootReducer: IScaleReducer<ILSIScales> = (function () {
-    const keys = [
+const rootReducer: IScaleReducer<Scales, Answer> = (function () {
+    const keys: Array<keyof Scales> = [
         "A", "C", "D", "G", "H", "B", "E", "F", "E", "D", "B", "H", "G", "C",
         "F", "A", "G", "C", "B", "F", "H", "A", "E", "D", "B", "C", "E", "A",
         "D", "G", "F", "H", "C", "A", "B", "G", "D", "E", "H", "F", "E", "A",
@@ -12,14 +13,21 @@ const rootReducer: IScaleReducer<ILSIScales> = (function () {
         "B", "C", "G", "C", "B", "A", "F", "E", "C", "A", "C", "E", "F",
     ];
 
-    return (scales: ILSIScales, answer, index) => {
-        scales[keys[index]] += Number(answer === "+");
+    return (scales: Scales, answer: Answer, index: number): Scales => {
+        const inc01 = Number(answer === "+");
+        scales[keys[index]] += inc01;
+
         return scales;
     };
 }());
 
-const normalize: IScaleMapper<ILSIScales> = (function () {
-    const t = [
+type LSIMetaScale = {
+    id: keyof Scales;
+    values: number[];
+};
+
+const normalize: IScaleMapper<Scales> = (function () {
+    const meta: LSIMetaScale[] = [
         {id: "A", values: [3, 13, 27, 39, 50, 61, 79, 84, 90, 97, 98, 99]},
         {id: "B", values: [2, 8, 25, 42, 63, 76, 87, 92, 97, 98, 99]},
         {id: "C", values: [2, 6, 19, 35, 53, 70, 80, 85, 88, 95, 97, 99]},
@@ -30,20 +38,27 @@ const normalize: IScaleMapper<ILSIScales> = (function () {
         {id: "H", values: [7, 19, 39, 61, 76, 91, 97, 98, 99]},
     ];
 
-    const ensureRange = (a, x, b) => Math.max(a, Math.min(x, b));
+    function ensureIndexIsInArray(index: number, arr: any[]): number {
+        return Math.max(0, Math.min(index, arr.length - 1));
+    }
 
-    return (scales: ILSIScales) => {
-        t.forEach(({id, values}) => {
-            scales["T" + id] = values[ensureRange(0, scales[id], values.length - 1)];
-        });
+    return (scales: Scales) => {
+        for (const metaScale of meta) {
+            const { id, values } = metaScale;
+            const rawValue = scales[id];
+            const indexOfNormalizedValue = ensureIndexIsInArray(rawValue, values);
+            const tkey: keyof Scales = ("T" + id) as any;
+
+            scales[tkey] = values[indexOfNormalizedValue];
+        }
 
         return scales;
     };
 }());
 
-const calculate = (answers) => normalize(answers.reduce(rootReducer, createBlankScales(0)));
-const validate = buildAnswersValidator(97, ["+", "-"]);
+const calculate = (answers: Answer[]) => normalize(answers.reduce(rootReducer, createBlankScales(0)));
+const validate = buildAnswersValidator<Answer>(97, ["+", "-"]);
 
-export default function lsi(answers: any[]): ILSIScales {
+export default function lsi(answers: any[]): Scales {
     return validate(answers) ? calculate(answers) : createBlankScales(NaN);
 }
