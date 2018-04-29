@@ -1,6 +1,8 @@
 Multi-Test Core Library
 =======================
 [![Build Status](https://travis-ci.org/multi-test/multi-test-core.svg?branch=master)](https://travis-ci.org/multi-test/multi-test-core)
+[![Dependencies Status](https://david-dm.org/multi-test/multi-test-core/status.svg)](https://david-dm.org/multi-test/multi-test-core)
+[![Dev Dependencies Status](https://david-dm.org/multi-test/multi-test-core/dev-status.svg)](https://david-dm.org/multi-test/multi-test-core?type=dev)
 
 Contains implementations of the following tests:
 
