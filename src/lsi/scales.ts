@@ -1,5 +1,3 @@
-import {IScaleFactory} from "../util/interfaces";
-
 export interface ILSIScales {
     A: number;
     B: number;

@@ -1,5 +1,3 @@
-import {IScaleFactory} from "../util/interfaces";
-
 export interface IUSKScales {
     "Ио": number;
     "Ид": number;

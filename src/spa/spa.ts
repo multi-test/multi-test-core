@@ -1,5 +1,5 @@
 import combineReducers from "../util/combineReducers";
-import buildAnswersValidator from "../util/validateAnswers";
+import {buildAnswersValidator} from "../util/validateAnswers";
 import {createBlankScales, ISpaScales} from "./scales";
 
 const rootReducer = combineReducers<Object>([
@@ -44,7 +44,7 @@ const rootReducer = combineReducers<Object>([
 }));
 
 const percent = (r) => Math.round(r * 100);
-const sum = (x, y, z, { a, b }) => percent((x * a) / (y * a + z * b));
+const sum = (x, y, z, {a, b}) => percent((x * a) / (y * a + z * b));
 const pick2 = (key, obj) => obj[key[0]][key[1] || ""];
 
 function scaleMapper(obj) {
@@ -73,12 +73,12 @@ function scaleMapper(obj) {
     };
 }
 
-const validate = buildAnswersValidator(101, [0, 2, 3, 4, 5, 6], createBlankScales(NaN));
+const validate = buildAnswersValidator(101, [0, 2, 3, 4, 5, 6]);
 
 function calculate(answers: any[]) {
     return scaleMapper(answers.reduce(rootReducer, {}));
 }
 
 export default function spa(answers: any[]): ISpaScales {
-    return validate(answers) || calculate(answers);
+    return validate(answers) ? calculate(answers) : createBlankScales(NaN);
 }

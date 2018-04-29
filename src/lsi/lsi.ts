@@ -1,8 +1,5 @@
-import {IScaleReducer} from "../util/interfaces";
-import {IScaleMapper} from "../util/interfaces";
-import buildAnswersValidator from "../util/validateAnswers";
-import {createBlankScales} from "./scales";
-import {ILSIScales} from "./scales";
+import {buildAnswersValidator} from "../util/validateAnswers";
+import {createBlankScales, ILSIScales} from "./scales";
 
 const rootReducer: IScaleReducer<ILSIScales> = (function () {
     const keys = [
@@ -23,14 +20,14 @@ const rootReducer: IScaleReducer<ILSIScales> = (function () {
 
 const normalize: IScaleMapper<ILSIScales> = (function () {
     const t = [
-        { id: "A", values: [3, 13, 27, 39, 50, 61, 79, 84, 90, 97, 98, 99] },
-        { id: "B", values: [2, 8, 25, 42, 63, 76, 87, 92, 97, 98, 99] },
-        { id: "C", values: [2, 6, 19, 35, 53, 70, 80, 85, 88, 95, 97, 99] },
-        { id: "D", values: [5, 20, 37, 63, 78, 88, 95, 97, 99] },
-        { id: "E", values: [1, 5, 6, 7, 12, 20, 27, 36, 46, 64, 72, 90, 96, 99] },
-        { id: "F", values: [6, 23, 37, 48, 65, 77, 86, 93, 97, 98, 99] },
-        { id: "G", values: [0, 3, 6, 17, 28, 42, 59, 76, 87, 92, 97, 99] },
-        { id: "H", values: [7, 19, 39, 61, 76, 91, 97, 98, 99] },
+        {id: "A", values: [3, 13, 27, 39, 50, 61, 79, 84, 90, 97, 98, 99]},
+        {id: "B", values: [2, 8, 25, 42, 63, 76, 87, 92, 97, 98, 99]},
+        {id: "C", values: [2, 6, 19, 35, 53, 70, 80, 85, 88, 95, 97, 99]},
+        {id: "D", values: [5, 20, 37, 63, 78, 88, 95, 97, 99]},
+        {id: "E", values: [1, 5, 6, 7, 12, 20, 27, 36, 46, 64, 72, 90, 96, 99]},
+        {id: "F", values: [6, 23, 37, 48, 65, 77, 86, 93, 97, 98, 99]},
+        {id: "G", values: [0, 3, 6, 17, 28, 42, 59, 76, 87, 92, 97, 99]},
+        {id: "H", values: [7, 19, 39, 61, 76, 91, 97, 98, 99]},
     ];
 
     const ensureRange = (a, x, b) => Math.max(a, Math.min(x, b));
@@ -45,8 +42,8 @@ const normalize: IScaleMapper<ILSIScales> = (function () {
 }());
 
 const calculate = (answers) => normalize(answers.reduce(rootReducer, createBlankScales(0)));
-const validate = buildAnswersValidator(97, ["+", "-"], createBlankScales(NaN));
+const validate = buildAnswersValidator(97, ["+", "-"]);
 
 export default function lsi(answers: any[]): ILSIScales {
-    return validate(answers) || calculate(answers);
+    return validate(answers) ? calculate(answers) : createBlankScales(NaN);
 }

@@ -1,39 +1,6 @@
-import {IScaleFactory} from "../util/interfaces";
+import {Factor5Scales} from "./types";
 
-export interface IFactor5Scales {
-    "I": number;
-    "I.1": number;
-    "I.2": number;
-    "I.3": number;
-    "I.4": number;
-    "I.5": number;
-    "II": number;
-    "II.1": number;
-    "II.2": number;
-    "II.3": number;
-    "II.4": number;
-    "II.5": number;
-    "III": number;
-    "III.1": number;
-    "III.2": number;
-    "III.3": number;
-    "III.4": number;
-    "III.5": number;
-    "IV": number;
-    "IV.1": number;
-    "IV.2": number;
-    "IV.3": number;
-    "IV.4": number;
-    "IV.5": number;
-    "V": number;
-    "V.1": number;
-    "V.2": number;
-    "V.3": number;
-    "V.4": number;
-    "V.5": number;
-}
-
-export const createBlankScales: IScaleFactory<IFactor5Scales> = function (v) {
+export const createBlankScales: IScaleFactory<Factor5Scales> = function (v) {
     return {
         "I": v,
         "I.1": v,

@@ -1,7 +1,7 @@
 /* global describe, beforeEach, it, expect */
 import { expect } from "chai";
 import alexithymia from "../src/alexithymia/alexithymia";
-import {should_equal, when_filled_with as wfw} from "./util/helpers";
+import {shouldEqual, whenFilledWith as wfw} from "./util/helpers";
 
 const when_filled_with = wfw(alexithymia, 26);
 

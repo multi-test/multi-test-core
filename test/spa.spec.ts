@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import {createBlankScales} from "../src/spa/scales";
 import spa from "../src/spa/spa";
-import { should_equal, when_filled_with as wfw } from "./util/helpers";
+import { shouldEqual, whenFilledWith as wfw } from "./util/helpers";
 
 const when_filled_with = wfw(spa, 101);
 

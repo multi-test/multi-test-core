@@ -1,5 +1,3 @@
-import {IScaleFactory} from "../util/interfaces";
-
 export type IMaddiAnswer = 0 | 1 | 2 | 3;
 
 export interface IMaddiScales {
@@ -10,8 +8,8 @@ export interface IMaddiScales {
 }
 
 export const createBlankScales: IScaleFactory<IMaddiScales> = (v) => ({
-    "hardiness": v,
-    "commitment": v,
-    "control": v,
-    "challenge": v,
+    hardiness: v,
+    commitment: v,
+    control: v,
+    challenge: v,
 });

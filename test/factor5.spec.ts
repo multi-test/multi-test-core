@@ -3,7 +3,7 @@ import { mapValues } from "lodash";
 import factor5 from "../src/factor5/factor5";
 import { createBlankScales } from "../src/factor5/scales";
 import { IFactor5Scales } from "../src/factor5/scales";
-import {should_equal, when_filled_with as wfw} from "./util/helpers";
+import {shouldEqual, whenFilledWith as wfw} from "./util/helpers";
 
 const when_filled_with = wfw(factor5, 75);
 

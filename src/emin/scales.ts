@@ -1,29 +1,16 @@
-import {IScaleFactory} from "../util/interfaces";
+import {EminScales} from "./types";
 
-export interface IEminScales {
-    МП: number;
-    МУ: number;
-    ВП: number;
-    ВУ: number;
-    ВЭ: number;
-    МЭИ: number;
-    ВЭИ: number;
-    ПЭ: number;
-    УЭ: number;
-    ОУ: number;
-}
-
-export const createBlankScales: IScaleFactory<IEminScales> = function (v) {
+export const createBlankScales: IScaleFactory<EminScales> = function (v) {
     return {
-        МП: v,
-        МУ: v,
         ВП: v,
         ВУ: v,
         ВЭ: v,
-        МЭИ: v,
         ВЭИ: v,
+        МП: v,
+        МУ: v,
+        МЭИ: v,
+        ОУ: v,
         ПЭ: v,
         УЭ: v,
-        ОУ: v,
     };
 };

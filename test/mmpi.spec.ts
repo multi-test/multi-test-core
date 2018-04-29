@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import mmpi from "../src/mmpi/mmpi";
 import {createBlankScales} from "../src/mmpi/scales";
-import {should_equal, when_filled_with as wfw} from "./util/helpers";
+import {shouldEqual, whenFilledWith as wfw} from "./util/helpers";
 
 const when_filled_with = wfw(mmpi, 71);
 
@@ -115,7 +115,7 @@ describe(mmpi.name, () => {
             "TK": 42,
         };
 
-        it(should_equal(expected), () => {
+        it(shouldEqual(expected), () => {
             expect(mmpi(answers)).to.eql(expected);
         });
     });

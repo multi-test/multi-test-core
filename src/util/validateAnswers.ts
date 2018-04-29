@@ -1,26 +1,25 @@
-import {
-    IAnswersValidator,
-    IScaleFactory,
-} from "../util/interfaces";
+export function buildAnswersValidator<TAnswer>(
+    countOfAnswers: number,
+    validAnswers: TAnswer[],
+): IAnswersValidator<TAnswer> {
 
-export default function buildAnswersValidator<TScales>(countOfAnswers: number, validAnswers: any[], invalidScales: TScales): IAnswersValidator<TScales> {
-    const isInvalid = function (answer) {
-        return !this.has(answer);
-    }.bind(new Set(validAnswers));
+    const setOfValidAnswers = new Set(validAnswers);
 
-    return function (answers) {
+    return function areAnswersValid(answers: any[]): answers is TAnswer[] {
         if (!answers) {
-            return invalidScales;
+            return false;
         }
 
         if (answers.length !== countOfAnswers) {
-            return invalidScales;
+            return false;
         }
 
         for (let i = 0; i < countOfAnswers; i++) {
-            if (isInvalid(answers[i])) {
-                return invalidScales;
+            if (!setOfValidAnswers.has(answers[i])) {
+                return false;
             }
         }
+
+        return true;
     };
 }

@@ -3,7 +3,7 @@
 import { expect } from "chai";
 import maddi from "../src/maddi/maddi";
 import {createBlankScales} from "../src/maddi/scales";
-import {should_equal, when_filled_with as wfw} from "./util/helpers";
+import {shouldEqual, whenFilledWith as wfw} from "./util/helpers";
 
 const lengths = {
     "commitment": { [1]: 7, [-1]: 11 },

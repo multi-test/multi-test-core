@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import {createBlankScales} from "../src/usk/scales";
 import usk from "../src/usk/usk";
-import {should_equal, when_filled_with as wfw} from "./util/helpers";
+import {shouldEqual, whenFilledWith as wfw} from "./util/helpers";
 
 const when_filled_with = wfw(usk, 44);
 
@@ -101,7 +101,7 @@ describe(usk.name, () => {
             "Из": 7,
         };
 
-        it(should_equal(expected), () => {
+        it(shouldEqual(expected), () => {
             expect(usk(answers)).to.eql(expected);
         });
     });

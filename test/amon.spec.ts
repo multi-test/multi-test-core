@@ -1,8 +1,8 @@
 /* global describe, beforeEach, it, expect */
 import { expect } from "chai";
 import amon from "../src/amon/amon";
-import {createBlankScales} from "../src/amon/scales";
-import {should_equal, when_filled_with as wfw} from "./util/helpers";
+import {createBlankScales} from "../src/amon/createBlankScales";
+import {shouldEqual, whenFilledWith as wfw} from "./util/helpers";
 
 const when_filled_with = wfw(amon, 220);
 

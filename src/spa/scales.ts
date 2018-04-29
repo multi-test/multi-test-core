@@ -1,5 +1,3 @@
-import {IScaleFactory} from "../util/interfaces";
-
 export interface ISpaScales {
     "1a": number;
     "1b": number;

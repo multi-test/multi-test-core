@@ -1,5 +1,3 @@
-import {IScaleFactory} from "../util/interfaces";
-
 export interface IMMPIScales {
     "L": number;
     "F": number;
@@ -27,9 +25,6 @@ export interface IMMPIScales {
 }
 
 export const createBlankScales: IScaleFactory<IMMPIScales> = (v) => ({
-    "L": v,
-    "F": v,
-    "K": v,
     "1": v,
     "2": v,
     "3": v,
@@ -38,9 +33,9 @@ export const createBlankScales: IScaleFactory<IMMPIScales> = (v) => ({
     "7": v,
     "8": v,
     "9": v,
-    "TL": v,
-    "TF": v,
-    "TK": v,
+    "F": v,
+    "K": v,
+    "L": v,
     "T1": v,
     "T2": v,
     "T3": v,
@@ -49,4 +44,7 @@ export const createBlankScales: IScaleFactory<IMMPIScales> = (v) => ({
     "T7": v,
     "T8": v,
     "T9": v,
+    "TF": v,
+    "TK": v,
+    "TL": v,
 });
