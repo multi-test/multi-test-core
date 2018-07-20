@@ -13,3 +13,5 @@ export interface IScaleFactory<TScales> {
 export interface IAnswersValidator<TScales> {
     (answers: any[]): TScales;
 }
+
+export type IAnswerValidator = (answer: any, index: number, answers: any[]) => boolean;
