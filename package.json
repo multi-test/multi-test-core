@@ -2,9 +2,11 @@
   "name": "multi-test-core",
   "version": "1.0.0",
   "description": "Collection of pure functions for calculating results of psychological tests",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "npm run compile && npm run bundle",
+    "compile": "tsc -m es6",
+    "bundle": "rollup dist/src/index.js --file index.js --format cjs",
     "lint": "tslint **/*.ts",
     "test": "mocha -r ts-node/register test/**/*.spec.ts"
   },
@@ -24,6 +26,7 @@
     "chai": "^3.5.0",
     "lodash": "^4.11.1",
     "mocha": "^5.2.0",
+    "rollup": "^0.63.4",
     "ts-node": "^3.0.2",
     "tslint": "^4.5.1",
     "typescript": "^2.4.1"
