@@ -10,8 +10,8 @@ export interface IMaddiScales {
 }
 
 export const createBlankScales: IScaleFactory<IMaddiScales> = (v) => ({
-    "hardiness": v,
-    "commitment": v,
-    "control": v,
-    "challenge": v,
+    hardiness: v,
+    commitment: v,
+    control: v,
+    challenge: v,
 });

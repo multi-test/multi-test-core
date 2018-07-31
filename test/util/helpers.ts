@@ -1,12 +1,12 @@
-import { curry, noop, values } from 'lodash';
-import { expect } from 'chai';
+import { expect } from "chai";
+import { curry, noop, values } from "lodash";
 
 export function should_equal(expectedScales) {
     if (values(expectedScales).every(isFinite)) {
         return `has scales = [${values(expectedScales)}]`;
     }
 
-    return 'should return NaN scales';
+    return "should return NaN scales";
 }
 
 export const when_filled_with = curry(function when_filled_with(
@@ -17,8 +17,8 @@ export const when_filled_with = curry(function when_filled_with(
     {
         _describe = describe,
         _beforeEach = beforeEach,
-        _it = it
-    } = {}
+        _it = it,
+    } = {},
 ) {
     _describe(`when filled with ${value}`, () => {
         let answers;

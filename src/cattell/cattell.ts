@@ -1,15 +1,15 @@
 import createAnswersValidator from "../util/validateAnswers";
+import rawMetadata from "./rawMetadata";
 import {createBlankScales, ICattellScales} from "./scales";
-import rawMetadata from './rawMetadata';
-import stenMetadata from './stenMetadata';
+import stenMetadata from "./stenMetadata";
 
 const GENDER_QUESTION_INDEX = 187;
 const AGE_QUESTION_INDEX = 188;
 const TOTAL_QUESTIONS = 189;
 
 const invalidScales = Object.freeze(createBlankScales(NaN));
-const isAnswerValid = (answer: any): boolean => answer === 'A' || answer === 'B' || answer === 'C';
-const isGenderValid = (gender: any): boolean => gender === 'M' || gender === 'F';
+const isAnswerValid = (answer: any): boolean => answer === "A" || answer === "B" || answer === "C";
+const isGenderValid = (gender: any): boolean => gender === "M" || gender === "F";
 const isAgeValid = (age: number): boolean => (16 <= age) && (age <= 70);
 
 const validate = createAnswersValidator<ICattellScales>(
@@ -24,7 +24,7 @@ const validate = createAnswersValidator<ICattellScales>(
                 return isAnswerValid(answer);
         }
     },
-    invalidScales
+    invalidScales,
 );
 
 function calculateRaw(answers: any[]): ICattellScales {
@@ -33,7 +33,7 @@ function calculateRaw(answers: any[]): ICattellScales {
     for (let index = 0; index < rawMetadata.length; index++) {
         const { scale, scores } = rawMetadata[index];
 
-        if (scale === '') {
+        if (scale === "") {
             continue;
         }
 
@@ -54,16 +54,16 @@ function calculateNormalized(answers: any[], raw: ICattellScales): ICattellScale
     stenTable.forEach(({ scale, scores }) => {
         const value = raw[scale];
 
-        scales[scale] = scores.find(({ range: [min, max] }) => {
+        scales[scale] = scores.findIndex(([min, max]) => {
             return (min <= value) && (value <= max);
-        }).score;
+        }) + 1;
     });
 
     return scales;
 }
 
-function getSTenScoreTableId(gender: 'M' | 'F', age: number) {
-    const suffix = (age <= 18) ? '1618' : (age <= 28) ? '1928' : '2970';
+function getSTenScoreTableId(gender: "M" | "F", age: number) {
+    const suffix = (age <= 18) ? "1618" : (age <= 28) ? "1928" : "2970";
     return gender + suffix;
 }
 

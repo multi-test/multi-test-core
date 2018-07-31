@@ -30,16 +30,16 @@ const compute = (scales: IMaddiScales) => {
 
 const norms = {
     average: {
-        "hardiness": 80.72,
-        "commitment": 37.64,
-        "control": 29.17,
-        "challenge": 13.91,
+        hardiness: 80.72,
+        commitment: 37.64,
+        control: 29.17,
+        challenge: 13.91,
     },
     dispersion: {
-        "hardiness": 18.53,
-        "commitment": 8.08,
-        "control": 8.43,
-        "challenge": 4.39,
+        hardiness: 18.53,
+        commitment: 8.08,
+        control: 8.43,
+        challenge: 4.39,
     },
 };
 

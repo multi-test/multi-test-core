@@ -5,8 +5,8 @@ import {
 
 export default function buildAnswersValidator<TScales>(
     countOfAnswers: number,
-    validatorArg: Array<any> | IAnswerValidator,
-    invalidScales: TScales
+    validatorArg: any[] | IAnswerValidator,
+    invalidScales: TScales,
 ): IAnswersValidator<TScales> {
     const isValid: IAnswerValidator = Array.isArray(validatorArg)
         ? buildAnswerValidator(validatorArg)
