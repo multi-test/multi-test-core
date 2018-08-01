@@ -1,5 +1,5 @@
 /* global describe, beforeEach, it, expect */
-import { expect } from "chai";
+import {expect} from "chai";
 import cattel from "../src/cattell/cattell";
 import {createBlankScales} from "../src/cattell/scales";
 
@@ -21,14 +21,18 @@ describe("cattell", () => {
         beforeEach(() => answers.fill("A"));
 
         describe("but only age is specified", () => {
-            beforeEach(() => { answers[188] = 18; });
+            beforeEach(() => {
+                answers[188] = 18;
+            });
 
             it("should return NaN scales", () =>
                 expect(cattel(answers)).to.eql(createBlankScales(NaN)));
         });
 
         describe("but only gender is specified", () => {
-            beforeEach(() => { answers[187] = "F"; });
+            beforeEach(() => {
+                answers[187] = "F";
+            });
 
             it("should return NaN scales", () =>
                 expect(cattel(answers)).to.eql(createBlankScales(NaN)));
@@ -168,6 +172,96 @@ describe("cattell", () => {
                 "Q2": 18,
                 "Q3": 9,
                 "Q4": 25,
+            },
+        });
+    });
+
+    it("real data test #2", () => {
+        answers = [
+          "A", "A", "C", "A",
+          "A", "B", "B", "C",
+          "A", "A", "B", "A",
+          "A", "A", "A", "A",
+          "B", "C", "A", "A",
+          "B", "A", "C", "C",
+          "A", "B", "B", "A",
+          "A", "A", "C", "B",
+          "B", "A", "C", "B",
+          "B", "A", "A", "A",
+          "B", "C", "C", "B",
+          "A", "C", "C", "C",
+          "C", "A", "A", "A",
+          "C", "B", "C", "C",
+          "A", "C", "C", "A",
+          "C", "A", "A", "C",
+          "A", "B", "A", "A",
+          "A", "A", "A", "A",
+          "A", "B", "A", "C",
+          "B", "B", "C", "A",
+          "B", "A", "A", "B",
+          "C", "B", "A", "A",
+          "A", "C", "C", "A",
+          "A", "A", "C", "A",
+          "A", "A", "A", "B",
+          "A", "B", "C", "C",
+          "A", "C", "A", "A",
+          "A", "A", "A", "C",
+          "A", "A", "B", "C",
+          "C", "C", "A", "A",
+          "C", "C", "C", "A",
+          "A", "C", "B", "B",
+          "C", "A", "A", "C",
+          "C", "C", "A", "A",
+          "C", "B", "C", "C",
+          "A", "C", "A", "C",
+          "C", "A", "C", "A",
+          "B", "A", "C", "C",
+          "A", "B", "A", "C",
+          "A", "A", "A", "B",
+          "C", "C", "A", "A",
+          "A", "C", "A", "A",
+          "C", "B", "A", "A",
+          "C", "A", "C", "C",
+          "B", "C", "C", "A",
+          "C", "A", "A", "A",
+          "A", "C", "A",
+          "M", 50, // T***ko"v
+        ];
+
+        expect(cattel(answers)).to.eql({
+            A: 6,
+            B: 3,
+            C: 4,
+            E: 6,
+            F: 4,
+            G: 3,
+            H: 8,
+            I: 7,
+            L: 9,
+            M: 5,
+            N: 1,
+            O: 6,
+            Q1: 4,
+            Q2: 7,
+            Q3: 7,
+            Q4: 7,
+            raw: {
+                A: 10,
+                B: 3,
+                C: 13,
+                E: 14,
+                F: 9,
+                G: 10,
+                H: 20,
+                I: 11,
+                L: 14,
+                M: 11,
+                N: 5,
+                O: 11,
+                Q1: 8,
+                Q2: 12,
+                Q3: 14,
+                Q4: 13,
             },
         });
     });
