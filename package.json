@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run compile && npm run bundle",
     "compile": "tsc -m es6",
-    "bundle": "rollup dist/src/index.js --file index.js --format cjs",
+    "bundle": "scripts/bundle.sh",
     "lint": "tslint **/*.ts",
     "test": "mocha -r ts-node/register test/**/*.spec.ts"
   },
