@@ -1,11 +1,13 @@
 {
     "compileOnSave": true,
     "compilerOptions": {
-        "target": "es6",
+        "target": "es5",
         "module": "commonjs",
         "moduleResolution": "node",
         "outDir": "dist",
+        "lib": ["es6"],
         "noImplicitAny": false,
+        "importHelpers": true,
         "sourceMap": false
     }
 }
