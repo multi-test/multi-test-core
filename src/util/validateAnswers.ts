@@ -3,7 +3,7 @@ import {
     IScaleFactory,
 } from "../util/interfaces";
 
-export default function buildAnswersValidator<TScales>(
+export function buildAnswersValidator<TScales>(
     countOfAnswers: number,
     validatorArg: any[] | IAnswerValidator,
     invalidScales: TScales,
@@ -28,6 +28,8 @@ export default function buildAnswersValidator<TScales>(
         }
     };
 }
+
+export default buildAnswersValidator;
 
 function buildAnswerValidator(validAnswers: any[]): IAnswerValidator {
     const set = new Set(validAnswers);
